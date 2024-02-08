@@ -35,6 +35,10 @@ class ArithmeticVisitor:
         else:
             return self.visit(ctx.expr())
 
+
+
+
+
 def main():
     expression = input("Digite uma expressão aritmética: ")
     lexer = ArithmeticLexer(InputStream(expression))

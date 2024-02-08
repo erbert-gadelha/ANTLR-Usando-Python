@@ -14,3 +14,16 @@ INT: [0-9]+ ;
 LPAREN: '(' ;
 RPAREN: ')' ;
 WS: [ \t\r\n]+ -> skip ;
+
+
+
+
+
+// Novas Regras do Parser
+program: statement+ ;
+statement: assignment | expr ;
+assignment: VAR ASSIGN expr ;
+   
+// Novas Regras do Lexer
+VAR: [a-zA-Z]+ ;
+ASSIGN: '=' ;

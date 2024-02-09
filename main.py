@@ -7,20 +7,26 @@ from meu_ArithmeticVisitor import ArithmeticVisitor
 def main():
     print ('\n\n\n\tPara sair pressione ENTER sem digitar nada.')
     visitor = ArithmeticVisitor()
-    
-    '''result = funct("a = 5", visitor)
-    result = funct("b = 7", visitor)
-    result = funct("c = a * b", visitor)'''
+    visitor.debbuging = False
 
-    print (f'\tresultado: {funct("a=2", visitor)}')
-    print (f'\tresultado: {funct("a+2", visitor)}')
+    '''expressions = [
+        "x = 5",
+        "y = x + 3",
+        "y * 2"
+    ]
 
-    #expression = input(" [in] < ")
-    expression = ''
+    for expression in expressions:
+        #print(f'         < {expression}')
+        print(f' <         {expression}')
+        result = funct(expression, visitor)
+        print(f'resultado: {result}\n')'''
+
+
+    expression = input(' '*11)
     while expression != "":
         result = funct(expression, visitor)
-        print("[out] >", result)
-        expression = input(" [in] < ")
+        print(f'resultado: {result}',)
+        expression = input(' '*11)
 
     print(visitor.get_variables())
     print ('\tAplicação finalizada..')

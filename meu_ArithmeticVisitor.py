@@ -40,14 +40,7 @@ class ArithmeticVisitor:
         child = ctx.getChild(0)
         result = self.visit(child, depth+1)
 
-        '''for i in range(ctx.getChildCount()):
-            child = ctx.getChild(i)
-            self.visit(child, depth+1)
-
-            self.print_color(f'[to perdidinho]', depth, 3)'''
-        
         self.print_color(f'[end of program]', depth, 1)
-        self.print_color(f'...\n\n', depth, 1)
 
         return result
 
@@ -57,13 +50,6 @@ class ArithmeticVisitor:
         child = ctx.getChild(0)
         return self.visit(child, depth+1)
 
-        '''for i in range(ctx.getChildCount()):
-            child = ctx.getChild(i)
-            self.visit(child, depth+1)
-
-            self.print_color(f'[to perdidinho]', depth, 3)
-
-        return None'''
 
     def visitAssignment(self, ctx,depth):
         #self.print_color(f'[assignment : \"{ctx.getText()}\"]', depth, 1)
@@ -72,7 +58,6 @@ class ArithmeticVisitor:
         expr = self.visit(ctx.getChild(2), depth+1)
 
         self.set_variable(var, expr)
-        self.print_color(f'[{var} equals ({self.variables[var]})]', depth, 2)
 
         return expr
 

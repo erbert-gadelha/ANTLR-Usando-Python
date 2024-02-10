@@ -98,23 +98,5 @@ class ArithmeticListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ArithmeticParser#comparison_expr.
-    def enterComparison_expr(self, ctx:ArithmeticParser.Comparison_exprContext):
-        pass
-
-    # Exit a parse tree produced by ArithmeticParser#comparison_expr.
-    def exitComparison_expr(self, ctx:ArithmeticParser.Comparison_exprContext):
-        pass
-
-
-    # Enter a parse tree produced by ArithmeticParser#boolean.
-    def enterBoolean(self, ctx:ArithmeticParser.BooleanContext):
-        pass
-
-    # Exit a parse tree produced by ArithmeticParser#boolean.
-    def exitBoolean(self, ctx:ArithmeticParser.BooleanContext):
-        pass
-
-
 
 del ArithmeticParser

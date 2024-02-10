@@ -59,7 +59,8 @@ class ArithmeticVisitor:
 
         self.set_variable(var, expr)
 
-        return expr
+        #return expr
+        return None
 
     def visitExpr(self, ctx, depth):
         #self.print_color(f'[expr : \"{ctx.getText()}\"]', depth, 1)
@@ -106,7 +107,7 @@ class ArithmeticVisitor:
         if var in self.variables:
             return self.variables[var]
         else:
-            return None
+            raise Exception(f'Variável \"{var}\" não definida.')
 
     def set_variable(self, var, value):
         self.variables[var] = value

@@ -62,5 +62,59 @@ class ArithmeticListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ArithmeticParser#if_statement.
+    def enterIf_statement(self, ctx:ArithmeticParser.If_statementContext):
+        pass
+
+    # Exit a parse tree produced by ArithmeticParser#if_statement.
+    def exitIf_statement(self, ctx:ArithmeticParser.If_statementContext):
+        pass
+
+
+    # Enter a parse tree produced by ArithmeticParser#block.
+    def enterBlock(self, ctx:ArithmeticParser.BlockContext):
+        pass
+
+    # Exit a parse tree produced by ArithmeticParser#block.
+    def exitBlock(self, ctx:ArithmeticParser.BlockContext):
+        pass
+
+
+    # Enter a parse tree produced by ArithmeticParser#condition.
+    def enterCondition(self, ctx:ArithmeticParser.ConditionContext):
+        pass
+
+    # Exit a parse tree produced by ArithmeticParser#condition.
+    def exitCondition(self, ctx:ArithmeticParser.ConditionContext):
+        pass
+
+
+    # Enter a parse tree produced by ArithmeticParser#boolean_expr.
+    def enterBoolean_expr(self, ctx:ArithmeticParser.Boolean_exprContext):
+        pass
+
+    # Exit a parse tree produced by ArithmeticParser#boolean_expr.
+    def exitBoolean_expr(self, ctx:ArithmeticParser.Boolean_exprContext):
+        pass
+
+
+    # Enter a parse tree produced by ArithmeticParser#comparison_expr.
+    def enterComparison_expr(self, ctx:ArithmeticParser.Comparison_exprContext):
+        pass
+
+    # Exit a parse tree produced by ArithmeticParser#comparison_expr.
+    def exitComparison_expr(self, ctx:ArithmeticParser.Comparison_exprContext):
+        pass
+
+
+    # Enter a parse tree produced by ArithmeticParser#boolean.
+    def enterBoolean(self, ctx:ArithmeticParser.BooleanContext):
+        pass
+
+    # Exit a parse tree produced by ArithmeticParser#boolean.
+    def exitBoolean(self, ctx:ArithmeticParser.BooleanContext):
+        pass
+
+
 
 del ArithmeticParser

@@ -22,6 +22,20 @@ class ArithmeticVisitor:
             return self.visitStatement(ctx,depth)
         elif isinstance(ctx, ArithmeticParser.AssignmentContext):
             return self.visitAssignment(ctx,depth)
+        elif isinstance(ctx, ArithmeticParser.If_statementContext):
+            return self.visitIf_statement(ctx,depth)
+        elif isinstance(ctx, ArithmeticParser.BlockContext):
+            return self.visitBlock(ctx,depth)
+        elif isinstance(ctx, ArithmeticParser.ConditionContext):
+            return self.visitCondition(ctx,depth)
+        elif isinstance(ctx, ArithmeticParser.Comparison_exprContext):
+            return self.visitComparison_expr(ctx,depth)
+        elif isinstance(ctx, ArithmeticParser.Boolean_exprContext):
+            return self.visitBoolean_expr(ctx,depth)
+        elif isinstance(ctx, ArithmeticParser.BooleanContext):
+            return self.visitBoolean(ctx,depth)
+
+
 
         elif isinstance(ctx, ArithmeticParser.ExprContext):
             return self.visitExpr(ctx,depth)
@@ -32,6 +46,75 @@ class ArithmeticVisitor:
         elif isinstance(ctx, TerminalNode):
             print (f'Node terminal: [{ctx.getText()}]')
             return self.get_variable(ctx.getText())
+
+
+    def visitIf_statement(self, ctx, depth):
+        #self.print_color(f'[conditional : \"{ctx.getText()}\"]', depth, 1)
+
+        condition = self.visit(ctx.getChild(1), depth+1)
+        self.print_color(f'condition: {condition}', depth+1, 3)
+
+        if condition:
+            return self.visit(ctx.getChild(2), depth+1)
+        else:
+            return self.visit(ctx.getChild(4), depth+1)
+
+    def visitBlock(self, ctx, depth):
+        #self.print_color(f'[block : \"{ctx.getText()}\"]', depth, 1)
+
+        for i in range(1, ctx.getChildCount()-1):
+            child = ctx.getChild(i)
+            self.visit(child, depth+1)
+
+        return None
+
+    def visitCondition(self, ctx, depth):
+        return self.visit(ctx.getChild(1), depth+1)
+
+
+
+
+    def visitComparison_expr(self, ctx, depth):
+        left = self.visit(ctx.getChild(0), depth+1)
+        right = self.visit(ctx.getChild(2), depth+1)
+        op = ctx.getChild(1).getText()
+
+        self.print_color(f'[left:{left}] {op} [right:{right}]', depth+1, 3)
+        #return None
+
+        if op == '>':
+            return left > right
+        elif op == '<':
+            return left < right
+        elif op == '==':
+            return left == right
+        elif op == '!=':
+            return left != right
+
+    def visitBoolean_expr(self, ctx, depth):
+
+        result = self.visit(ctx.getChild(0), depth+1)
+
+        print(f'boolean_expr: {result}')
+
+        for i in range(1, (ctx.getChildCount()/2).__int__()):
+            child = self.visit(ctx.getChild(i*2))
+            op = ctx.getChild(i*2-1).getText()
+
+            if op == '&':
+                result = result and child
+            else:
+                result = result or child
+                
+        
+        return result
+
+    def visitBoolean(self, ctx, depth):
+        if ctx.getText() == 'true':
+            return True
+        else:
+            return False
+
 
 
 
